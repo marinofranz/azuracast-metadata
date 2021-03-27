@@ -8,7 +8,7 @@ use App\Event;
 use NowPlaying\Result\Result;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class ExampleNowPlayingEventHandler implements EventSubscriberInterface
+class MetadataHandler implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
@@ -24,7 +24,7 @@ class ExampleNowPlayingEventHandler implements EventSubscriberInterface
         $np_raw = $event->getResult()->toArray();
 
         $np_raw['now_playing']['artist'] = str_replace(array(' X ', '/', ';'), ', ', $np_raw['now_playing']['artist']);
-        $np_raw['now_playing']['title'] = str.replace(array('/', ';'), ', ', $np_raw['now_playing']['title']);
+        $np_raw['now_playing']['title'] = str_replace(array('/', ';'), ', ', $np_raw['now_playing']['title']);
 
         $pos = strrpos($np_raw['now_playing']['artist'], ', ');
         if($pos !== false)
