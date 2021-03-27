@@ -1,0 +1,17 @@
+{
+    "name": "marinofranz/metadata-plugin",
+    "description": "Metadata optimization plugin",
+    "type": "azuracast-plugin",
+    "authors": [
+        {
+            "name": "Marino Franz",
+            "email": "me@marino.codes"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Plugin\\MetadataPlugin\\": "src"
+        }
+    },
+    "require": {}
+}
