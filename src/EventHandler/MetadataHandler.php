@@ -23,13 +23,13 @@ class MetadataHandler implements EventSubscriberInterface
     {
         $np_raw = $event->getResult()->toArray();
 
-        $np_raw['now_playing']['artist'] = str_replace(array(' X ', '/', ';'), ', ', $np_raw['now_playing']['artist']);
-        $np_raw['now_playing']['title'] = str_replace(array('/', ';'), ', ', $np_raw['now_playing']['title']);
+        $np_raw['currentSong']['artist'] = str_replace(array(' X ', '/', ';'), ', ', $np_raw['currentSong']['artist']);
+        $np_raw['currentSong']['title'] = str_replace(array('/', ';'), ', ', $np_raw['currentSong']['title']);
 
-        $pos = strrpos($np_raw['now_playing']['artist'], ', ');
+        $pos = strrpos($np_raw['currentSong']['artist'], ', ');
         if($pos !== false)
         {
-           $np_raw['now_playing']['artist'] = substr_replace($np_raw['now_playing']['artist'], ' & ', $pos, strlen(', '));
+           $np_raw['currentSong']['artist'] = substr_replace($np_raw['currentSong']['artist'], ' & ', $pos, strlen(', '));
         }
 
         $event->setResult(Result::fromArray($np_raw));
